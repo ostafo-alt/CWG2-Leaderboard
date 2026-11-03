@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CWG2 Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+
+<div id="tip" hidden></div>
+<div class="wrap">
+  <header class="top">
+    <div style="display:grid;gap:4px">
+      <span class="label">Warcraft III · CustomMapData\CWG2</span>
+      <h1>CWG2 Leaderboard</h1>
+    </div>
+    <nav class="nav" aria-label="Views"><a href="#saves" id="navSaves">My saves</a><a href="#leaderboard" id="navBoard">Leaderboard</a></nav>
+    <div class="loader" id="topLoader" hidden>
+      <input type="file" id="pickFolder" webkitdirectory directory multiple hidden>
+      <input type="file" id="pickFiles" accept=".pld" multiple hidden>
+      <button class="btn" id="btnFolder" type="button">Open CWG2 folder</button>
+      <button class="btn ghost" id="btnFiles" type="button">Pick .pld files</button>
+    </div>
+  </header>
+
+  <div id="viewSaves" style="display:grid;gap:28px">
+  <section class="welcome" id="welcome">
+    <div class="glyph" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 10v6M9 13l3 3 3-3"/></svg></div>
+    <h2>Waiting for your save folder</h2>
+    <p>Drop your CWG2 folder here, or open it with the button below, to view your heroes and submit them to the leaderboard. It's usually at</p>
+    <span class="path">Documents\Warcraft III\CustomMapData\CWG2</span>
+    <div class="actions">
+      <button class="btn" id="btnFolder2" type="button">Open CWG2 folder</button>
+      <button class="btn ghost" id="btnFiles2" type="button">Pick .pld files</button>
+    </div>
+    <span class="pulse" id="welcomeMsg"><i></i>No saves loaded yet · nothing is sent until you choose Submit</span>
+  </section>
+
+  <div id="loaded" hidden style="display:grid;gap:28px">
+  <div class="drop" id="drop">
+    <div class="status" id="status"></div>
+    <div class="submit"><button class="btn" id="btnSubmit" type="button">Submit to leaderboard</button><span class="msg muted" id="submitMsg">Uploading again replaces your previous entry.</span></div>
+  </div>
+
+  <section style="display:grid;gap:12px">
+    <div class="toolbar">
+      <h2>Heroes</h2>
+      <label for="sortBy">Sort
+        <select id="sortBy">
+          <option value="slot">Slot</option>
+          <option value="exp">Experience</option>
+          <option value="saved">Last saved</option>
+          <option value="gen">Times saved</option>
+        </select>
+      </label>
+    </div>
+    <div class="roster" id="roster"></div>
+  </section>
+
+  <section class="detail" id="detail"></section>
+
+  <section style="display:grid;gap:12px">
+    <h2>Account</h2>
+    <div class="two" id="account"></div>
+  </section>
+  </div>
+  </div>
+
+  <div id="viewBoard" hidden style="display:grid;gap:20px">
+    <div class="lbbar">
+      <div style="display:grid;gap:4px"><h2 id="lbTitle">Leaderboard</h2><span class="muted" id="lbSub">Each player's strongest character, highest first.</span></div>
+      <div class="controls">
+        <label for="lbStat"><span class="label">Ranked by</span><select id="lbStat">
+          <option value="primary">Highest stat</option><option value="str">Strength</option><option value="agi">Agility</option><option value="int">Intelligence</option>
+        </select></label>
+      </div>
+    </div>
+    <div class="tablewrap"><table class="board"><thead id="lbHead"></thead><tbody id="lbBody"><tr><td class="empty">Loading…</td></tr></tbody></table></div>
+  </div>
+</div>
+
+</body>
+</html>

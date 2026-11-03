@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cwg2-leaderboard",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-09-01",
+  // Static files (page, CSS, JS, map data). /api/* goes to the Worker first.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cwg2",
+      // Replace with the database_id printed by: npx wrangler d1 create cwg2
+      "database_id": "REPLACE_WITH_YOUR_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "cwg2-leaderboard",
+  "version": "3.0.0",
+  "description": "CWG2 save viewer and leaderboard on Cloudflare Workers + D1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler d1 migrations apply cwg2 --local && wrangler dev",
+    "db:create": "wrangler d1 create cwg2",
+    "db:migrate": "wrangler d1 migrations apply cwg2 --remote",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}
